@@ -1,0 +1,59 @@
+version: '2'
+services:
+  libregob:
+    image: fabricadesoftwarelibre/libregob:18.1-dev
+    networks:
+      - libregob-network
+    depends_on:
+      - libregobdb
+      - wdb
+      - mailhog
+    ports:
+      - "8069:8069"
+    volumes:
+        # Reemplazar con la ruta en la computadora.
+        # LibreGOB addons.
+      - ~/Repositorios/fabricadesoftwarelibre/libregob/libregob-addons:/mnt/libregob-addons/:z
+        # addons privados
+      # - ~/Repositorios/mirepositorio/extra-addons:/mnt/extra-addons/:z
+    environment:
+        # Variables de PostgreSQL
+      - HOST=libregobdb # default db
+      - PORT=5432 # default 5432
+      - USER=libregob
+      - PASSWORD=libregobpwd
+        # Variables de wdb  
+      - WDB_NO_BROWSER_AUTO_OPEN=True
+      - WDB_SOCKET_SERVER=wdb
+      - WDB_WEB_PORT=1984
+      - WDB_WEB_SERVER=localhost
+    
+    # Arrancar LibreGOB con:
+    # --dev=all para todas las opciones de desarrollo activadas.
+    # --smtp=mailhog --smtp-port=1025 para usar mailhog como smtp.
+    # --db-filter=.* para listar todas las bases de datos.
+    command: -- --dev=all --smtp=mailhog --smtp-port=1025 --db-filter=.*
+  libregobdb:
+    image: postgres:9.4
+    networks:
+      - libregob-network
+    environment:
+      - POSTGRES_USER=libregob
+      - POSTGRES_PASSWORD=libregobpwd
+  wdb:
+    image: fabricadesoftwarelibre/wdb:18.1
+    networks:
+      - libregob-network
+    ports:
+      - "1984:1984"
+  mailhog:
+    image: mailhog/mailhog
+    networks:
+      - libregob-network
+    ports:
+        # Puero del servicio web.
+      - "8025:8025"
+        # Puerto smtp. 
+      # - "1025:1025"
+networks:
+ libregob-network:

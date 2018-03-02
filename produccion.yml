@@ -1,0 +1,40 @@
+version: '2'
+services:
+  libregob:
+    image: fabricadesoftwarelibre/libregob:18.1
+    networks:
+      - libregob-network
+    depends_on:
+      - libregobdb
+    ports:
+        # Colocamos LibreGOB en el puerto 80 para acceso general.
+      - "80:8069"
+        # Publicamos el puerto de longpolling.
+      - "8072:8072"
+    volumes:
+        # Reemplazar con la ruta en el servidor.
+        # Ruta hacia los addons privados.
+      - /ruta/a/addons:/mnt/extra-addons/:z
+        # Ruta hacia el filestore.
+      - /ruta/al/filestore:/var/lib/odoo/:z
+        # Ruta al directorio de configuraciones.
+      - /ruta/a/configuracion:/etc/odoo/:z
+    environment:
+      # Deben ser las mismas que en db.
+      - HOST=libregobdb # default db
+      - PORT=5432 # default 5432
+      - USER=libregob
+      - PASSWORD=libregobpwd
+  libregobdb:
+    image: postgres:9.4
+    volumes:
+        # Reemplazar con la ruta en el servidor.
+        # Ruta hacia el almacenamiento de postgresql.
+      - /ruta/al/almacenamiento/base/de/datos:/var/lib/postgresql/data/:z
+    networks:
+      - libregob-network
+    environment:
+      - POSTGRES_USER=libregob
+      - POSTGRES_PASSWORD=libregobpwd
+networks:
+  libregob-network:
