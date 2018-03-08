@@ -14,11 +14,11 @@ services:
     volumes:
         # Reemplazar con la ruta en el servidor.
         # Ruta hacia los addons privados.
-      - /ruta/a/addons:/mnt/extra-addons/:z
+      - ~/libregob/mnt/extra-addons:/mnt/extra-addons/:z
         # Ruta hacia el filestore.
-      - /ruta/al/filestore:/var/lib/odoo/:z
+      - ~/libregob/var/lib/odoo:/var/lib/odoo/:z
         # Ruta al directorio de configuraciones.
-      - /ruta/a/configuracion:/etc/odoo/:z
+      - ~/libregob/etc/odoo:/etc/odoo/:z
     environment:
       # Deben ser las mismas que en db.
       - HOST=libregobdb # default db
@@ -30,7 +30,7 @@ services:
     volumes:
         # Reemplazar con la ruta en el servidor.
         # Ruta hacia el almacenamiento de postgresql.
-      - /ruta/al/almacenamiento/base/de/datos:/var/lib/postgresql/data/:z
+      - ~/libregobdb/var/lib/postgresql/data:/var/lib/postgresql/data/:z
     networks:
       - libregob-network
     environment:
