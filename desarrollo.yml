@@ -6,10 +6,11 @@ services:
       - libregob-network
     depends_on:
       - libregobdb
-      - wdb
+      - depurador
       - mailhog
     ports:
       - "8069:8069"
+      - "8072:8072"
     volumes:
         # Reemplazar con la ruta en la computadora.
         # LibreGOB addons.
@@ -23,8 +24,8 @@ services:
       - USER=libregob
       - PASSWORD=libregobpwd
         # Variables de wdb  
-      - WDB_NO_BROWSER_AUTO_OPEN=True
-      - WDB_SOCKET_SERVER=wdb
+      - WDB_NO_BROWSER_AUTO_OPEN=False
+      - WDB_SOCKET_SERVER=depurador
       - WDB_WEB_PORT=1984
       - WDB_WEB_SERVER=localhost
     
@@ -40,8 +41,8 @@ services:
     environment:
       - POSTGRES_USER=libregob
       - POSTGRES_PASSWORD=libregobpwd
-  wdb:
-    image: fabricadesoftwarelibre/wdb:18.1
+  depurador:
+    image: fabricadesoftwarelibre/libregob-depurador:18.1
     networks:
       - libregob-network
     ports:
