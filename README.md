@@ -6,7 +6,9 @@ Usted puede clonar el proyecto directamente o hacer una bifurcación (fork), si 
 
 Una vez que hemos bifurcado el proyecto en Minka, procedemos a clonarlo en nuestra computadora local, de preferencia, debemos usar el protocolo https:
 
-`git clone https://minka.gob.ec/suusuariodeminka/libregob-desarrollo.git`
+```
+git clone https://minka.gob.ec/suusuariodeminka/libregob-desarrollo.git
+```
 
 Y agregamos el repositorio upstream para poder mantenernos actualizados.
 
