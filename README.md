@@ -1,14 +1,19 @@
 # HERRAMIENTAS DE DESARROLLO DEL PROYECTO LIBREGOB.
 
-# PRODUCCIÓN.
-El archivo produccion.yml contiene una plantilla para levantar LibreGOB en producción.
+El desarrollo está diseñado para funcionar en cualquier equipo que permita utilizar una versión de docker superior o igual a 17.6, las pruebas se realizan sobre Ubuntu 16.04, concretamente sobre [Microwatt OS v10](http://planetwatt.com/new/index.php/downloads/). La compatibilidad con entornos Windows o distribuciones distintas no está garantizada y no se receptarán correcciones de errores para estas plataformas.
 
-# DESARROLLO.
-El archivo desarrollo.yml contiene una plantilla para probar y desarrollar sobre LibreGOB.
+Usted puede clonar el proyecto directamente o hacer una bifurcación (fork), si desea contribuir al proyecto, recomendamos la bifurcación.
 
-Contiene:
-- Una herramienta para verificar errores (wdb).
-- Un servidor de smtp de pruebas (mailhug)
- 
-# DOCKERFILE
-El archivo Dockerfile agrega librerías que solo se usan en un entorno de desarrollo.
+Una vez que hemos bifurcado el proyecto en Minka, procedemos a clonarlo en nuestra computadora local, de preferencia, debemos usar el protocolo https:
+
+`git clone https://minka.gob.ec/suusuariodeminka/libregob-desarrollo.git`
+
+Y agregamos el repositorio upstream para poder mantenernos actualizados.
+
+```
+cd libregob-desarrollo
+git remote add upstream https://minka.gob.ec/fabricadesoftwarelibre/libregob-desarrollo.git
+```
+
+La manera más sencilla de utilizar el proyecto, sin modificaciones, el clonar el proyecto LibreGOB en su directorio home, en la ruta ~/Repositorios/fabricadesoftwarelibre/ puede seguir las instrucciones indicadas en el archivo README del proyecto LibreGOB.
+
