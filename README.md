@@ -1,21 +1,34 @@
 # HERRAMIENTAS DE DESARROLLO DEL PROYECTO LIBREGOB.
 
-El desarrollo está diseñado para funcionar en cualquier equipo que permita utilizar una versión de docker superior o igual a 17.6, las pruebas se realizan sobre Ubuntu 16.04, concretamente sobre [Microwatt OS v10](http://planetwatt.com/new/index.php/downloads/). La compatibilidad con entornos Windows o distribuciones distintas no está garantizada y no se receptarán correcciones de errores para estas plataformas.
+Este repositorio contiene herramientas de desarrollo que facilitan la adopción del proyecto [LibreGOB](http://libregob.org), antes de continuar con las herramientas de desarrollo, por favor, lea la información del [repositorio principal](https://minka.gob.ec/fabricadesoftwarelibre/libregob).
 
-Usted puede clonar el proyecto directamente o hacer una bifurcación (fork), si desea contribuir al proyecto, recomendamos la bifurcación.
+Una vez instaladas las dependiencias y clonado el repositorio principal, procedemos a bifurcar el repositorio y lo clonamos en nuestro equipo local, de preferencia, debemos usar el protocolo https y dentro del directorio `~/Repositorios/fabricadesoftwarelibre` que creamos anteriormente.
 
-Una vez que hemos bifurcado el proyecto en Minka, procedemos a clonarlo en nuestra computadora local, de preferencia, debemos usar el protocolo https:
 
 ```
-git clone https://minka.gob.ec/suusuariodeminka/libregob-desarrollo.git
+foo@bar:~$ cd ~/Repositorios/fabricadesoftwarelibre
+foo@bar:~$ git clone https://minka.gob.ec/suusuariodeminka/libregob-desarrollo.git
 ```
 
 Y agregamos el repositorio upstream para poder mantenernos actualizados.
 
 ```
-cd libregob-desarrollo
-git remote add upstream https://minka.gob.ec/fabricadesoftwarelibre/libregob-desarrollo.git
+foo@bar:~$ cd libregob-desarrollo
+foo@bar:~$ git remote add upstream https://minka.gob.ec/fabricadesoftwarelibre/libregob-desarrollo.git
 ```
 
-La manera más sencilla de utilizar el proyecto, sin modificaciones, el clonar el proyecto LibreGOB en su directorio home, en la ruta ~/Repositorios/fabricadesoftwarelibre/ puede seguir las instrucciones indicadas en el archivo README del proyecto LibreGOB.
+Si hemos seguido las instrucciones para clonar el repositorio LibreGOB al pie de la letra, podrémos iniciar nuestro entorno de desarrollo con el comando docker-compose, este comando lo debemos ejecutar dentro de la carpeta librebog-desarrollo:
 
+```
+foo@bar:~$ docker-compose -f desarrollo.yml up
+```
+
+Podrémos acceder a nuestra instancia local de LibreGOB desde el navegador, en la dirección `localhost:8069`, la contraseña de administración es `libregob`.
+
+Si hemos decidido clonar el repositorio en una carpeta distinta, deberemos edidar el archivo `desarrollo.yml` y deberemos modificar la ruta de los volúmenes del servicio `libregob` para que coincida con nuestra ruta.
+
+Al terminar, deberemos cerrar nuestro servicio con las teclas Ctrl+C y/o terminarlo completamente con el comando docker-compose:
+
+```
+foo@bar:~$ docker-compose -f desarrollo.yml down
+```
