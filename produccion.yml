@@ -25,6 +25,8 @@ services:
       - PORT=5432 # default 5432
       - USER=libregob
       - PASSWORD=libregobpwd
+    # impide el acceso a la lista de bases: --no-database-list
+    command: -- --no-database-list
   libregobdb:
     image: postgres:9.4
     volumes:
