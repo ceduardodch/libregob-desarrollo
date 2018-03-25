@@ -55,6 +55,8 @@ O, si deseamos que el depurador inicie automáticamente una instancia de depurac
         ...
 ```
 
+Si estamos utilizando el [editor de texto](https://minka.gob.ec/fabricadesoftwarelibre/libregob-nvim) del proyecto, podemos utilizar el atajo `wst` para agregar el punto de depuración.
+
 Reiniciamos el servicio `libregob` y ejecutamos la función a depurar. Cuando se inicie una sesión de depuración se abrirá una ventana nueva en el navegador, en la cual usted podrá trabajar.
 
 NOTA: Es posible que en Firefox la sesión de depuración no se cierre automáticamente al terminar, esto es debido a una configuración del navegador, para solucionarlo visite `about:config` y establezca: `dom.allow_scripts_to_close_windows` a `true`
